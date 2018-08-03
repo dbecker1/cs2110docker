@@ -51,6 +51,10 @@ RUN $INST_SCRIPTS/libnss_wrapper.sh
 ADD ./src/common/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 
+### Install Complx
+ADD ./src/common/complx/ /complx/
+RUN cd /complx && ./install.sh
+
 USER 1000
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
