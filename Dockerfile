@@ -14,11 +14,11 @@ ENV DISPLAY=:1 \
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
 ### Envrionment config
-ENV HOME=/headless \
+ENV HOME=/cs2110 \
     TERM=xterm \
     STARTUPDIR=/dockerstartup \
-    INST_SCRIPTS=/headless/install \
-    NO_VNC_HOME=/headless/noVNC \
+    INST_SCRIPTS=/cs2110/install \
+    NO_VNC_HOME=/cs2110/noVNC \
     DEBIAN_FRONTEND=noninteractive \
     VNC_COL_DEPTH=24 \
     VNC_RESOLUTION=1280x1024 \
@@ -35,15 +35,12 @@ RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 RUN $INST_SCRIPTS/tools.sh
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-### Install xvnc-server & noVNC - HTML5 based VNC viewer
-RUN $INST_SCRIPTS/tigervnc.sh
-RUN $INST_SCRIPTS/no_vnc.sh
+### Install xvnc-server, noVNC, chrome, and xfce
+RUN $INST_SCRIPTS/tigervnc.sh && \
+    $INST_SCRIPTS/no_vnc.sh && \
+    $INST_SCRIPTS/chrome.sh && \
+    $INST_SCRIPTS/xfce_ui.sh
 
-### Install chrome browser
-RUN $INST_SCRIPTS/chrome.sh
-
-### Install xfce UI
-RUN $INST_SCRIPTS/xfce_ui.sh
 ADD ./src/common/xfce/ $HOME/
 
 ### configure startup
@@ -51,11 +48,12 @@ RUN $INST_SCRIPTS/libnss_wrapper.sh
 ADD ./src/common/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 
-### Install Complx
-ADD ./src/common/complx/ /complx/
-RUN cd /complx && ./install.sh && rm -rf *
-WORKDIR $HOME
 
+### Install Complx
+WORKDIR /complx
+ADD ./src/common/complx/ .
+RUN ./install.sh && rm -rf *
+WORKDIR $HOME
 USER 1000
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
