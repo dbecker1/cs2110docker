@@ -51,11 +51,20 @@ RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 ### Install gcc/gdb
 RUN $INST_SCRIPTS/cTools.sh
 
+### Add repository for Complx and nin10kit
+RUN apt-get install -y software-properties-common && \
+     add-apt-repository ppa:tricksterguy87/ppa-gt-cs2110
+
 ### Install Complx
-WORKDIR /complx
-ADD ./src/common/complx/ .
-RUN ./install.sh && rm -rf *
-WORKDIR $HOME
+#WORKDIR /complx
+#ADD ./src/common/complx/ .
+#RUN ./install.sh && rm -rf *
+#WORKDIR $HOME
+RUN apt update && apt install -y complx-tools
+
+### Install GBA Tools
+RUN apt install -y gcc-arm-none-eabi cs2110-vbam-sdl cs2110-gba-linker-script nin10kit
+
 USER 1000
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
