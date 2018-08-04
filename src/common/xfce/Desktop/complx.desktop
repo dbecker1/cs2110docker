@@ -1,13 +1,12 @@
 [Desktop Entry]
 Version=1.0
-Name=Complx
-GenericName=Complx
-Comment=Emulate LC3
-Exec=complx %U
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-StartupNotify=true
-X-AppInstall-Package=complx
 
-Path=
+Type=Application
+Name=Complx
+GenericName=LC3 Simulator
+Comment=Simulator for the lc3 assembly language by Brandon
+Icon=complx
+Categories=Development
+Exec=complx %U
+TryExec=complx
+Terminal=false
