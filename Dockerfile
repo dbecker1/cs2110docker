@@ -27,8 +27,8 @@ ENV HOME=/cs2110 \
 WORKDIR $HOME
 
 ### Add all install scripts for further steps
-ADD ./src/common/install/ $INST_SCRIPTS/
-ADD ./src/ubuntu/install/ $INST_SCRIPTS/
+ADD ./src/install/base/ $INST_SCRIPTS/
+ADD ./src/install/tools/ $INST_SCRIPTS/
 RUN find $INST_SCRIPTS -name '*.sh' -exec chmod a+x {} +
 
 ### Install some common tools
@@ -41,11 +41,11 @@ RUN $INST_SCRIPTS/tigervnc.sh && \
     $INST_SCRIPTS/chrome.sh && \
     $INST_SCRIPTS/xfce_ui.sh
 
-ADD ./src/common/xfce/ $HOME/
+ADD ./src/config/xfce/ $HOME/
 
 ### configure startup
 RUN $INST_SCRIPTS/libnss_wrapper.sh
-ADD ./src/common/scripts $STARTUPDIR
+ADD ./src/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 
 ### Install gcc/gdb
