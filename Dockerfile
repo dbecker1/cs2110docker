@@ -41,7 +41,7 @@ RUN $INST_SCRIPTS/tigervnc.sh && \
     $INST_SCRIPTS/no_vnc.sh && \
     $INST_SCRIPTS/chrome.sh && \
     $INST_SCRIPTS/xfce_ui.sh && \
-    apt-get autoclean && apt-get clean && apt-get autoremove
+    apt-get -y autoclean && apt-get -y clean && apt-get -y autoremove
 
 ADD ./src/config/xfce/ $HOME/
 
