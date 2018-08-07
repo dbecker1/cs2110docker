@@ -4,6 +4,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Daniel Becker "dbecker.fl@gmail.com"
 ENV REFRESHED_AT 2018-08-02
+ENV CS2110_IMAGE_VERSION 0.1
 
 ## Connection ports for controlling the UI:
 # VNC port:5901
