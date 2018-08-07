@@ -40,8 +40,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 RUN $INST_SCRIPTS/tigervnc.sh && \
     $INST_SCRIPTS/no_vnc.sh && \
     $INST_SCRIPTS/chrome.sh && \
-    $INST_SCRIPTS/xfce_ui.sh && \
-    apt-get -y autoclean && apt-get -y clean && apt-get -y autoremove
+    $INST_SCRIPTS/xfce_ui.sh
 
 ADD ./src/config/xfce/ $HOME/
 
