@@ -1,8 +1,8 @@
 #!/bin/bash
 
-docker -v >/dev/null
-
 imageName="dbecker1/cs2110docker"
+
+docker -v >/dev/null
 
 dockerExists=$?
 
@@ -43,7 +43,7 @@ fi
 
 echo Starting up new CS 2110 Docker Container:
 
-docker run -d -p 6901:6901 -v "$(pwd)":/cs2110/host/ dbecker1/cs2110docker 
+docker run -d -p 6901:6901 -p 5901:5901 -v "$(pwd)":/cs2110/host/ dbecker1/cs2110docker 
 
 successfulRun=$?
 
