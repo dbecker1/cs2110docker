@@ -38,7 +38,6 @@ successfulPull=$?
 
 if [ $successfulPull != 0 ]; then
 	echo ERROR: Unable to pull down the most recent image of $imageName
-	exit
 fi 
 
 echo Starting up new CS 2110 Docker Container:
