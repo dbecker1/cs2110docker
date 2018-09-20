@@ -4,6 +4,6 @@ set -e
 
 echo "Install gcc/gdb"
 apt-get update
-apt-get install -y gcc gdb
+apt-get install -y gcc gdb build-essential
 apt-get clean -y
 
