@@ -11,7 +11,17 @@ if  [ $dockerExists != 0 ]; then
 	exit
 fi
 
+docker container ls >/dev/null
+dockerNotRunning=$?
+
+if [ $dockerNotRunning != 0 ]; then
+	echo ERROR: Docker is not currently running. Please start Docker before running this script.
+	exit
+fi
+
 echo Found Docker Installation. Checking for existing containers.
+
+
 
 existingContainers=$(docker ps -a | grep $imageName | awk '{print $1}')
 
@@ -39,8 +49,16 @@ docker run -d -p 6901:6901 -v "$(pwd)":/cs2110/host/ dbecker1/cs2110docker
 
 successfulRun=$?
 
+ipAddress="$(docker-machine ip default 2>/dev/null)"
+
+foundIp=$?;
+
+if [ $foundIp != 0 ]; then
+	ipAddress="localhost";
+fi
+
 if [ $successfulRun == 0 ]; then
-	echo Successfully launched CS 2110 Docker container. Please go to http://localhost:6901/vnc.html to access it.
+	echo Successfully launched CS 2110 Docker container. Please go to http://$ipAddress:6901/vnc.html to access it.
 else 
 	echo ERROR: Unable to launch CS 2110 Docker container.
 fi 
