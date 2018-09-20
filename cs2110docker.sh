@@ -21,8 +21,6 @@ fi
 
 echo Found Docker Installation. Checking for existing containers.
 
-
-
 existingContainers=$(docker ps -a | grep $imageName | awk '{print $1}')
 
 if [ $existingContainers ]; then
