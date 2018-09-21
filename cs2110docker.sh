@@ -31,6 +31,11 @@ else
 	echo No existing CS 2110 containers.
 fi
 
+if [ $1 == "stop" ]; then
+	echo Successfully stopped CS 2110 containers
+	exit 
+fi 
+
 echo Pulling down most recent image of $imageName
 docker pull $imageName
 
