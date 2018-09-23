@@ -55,6 +55,9 @@ RUN $INST_SCRIPTS/cTools.sh
 ### Install complx and GBA
 RUN $INST_SCRIPTS/complxGba.sh
 
+### Install and configure firewall
+RUN $INST_SCRIPTS/firewall.sh
+
 USER 1000
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
