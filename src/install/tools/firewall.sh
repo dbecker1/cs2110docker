@@ -9,5 +9,5 @@ apt-get install -y ufw
 ufw default deny outgoing
 ufw default deny incoming
 
-uwf default allow 6901
-uwf default allow 5901
+ufw default allow 6901
+ufw default allow 5901
