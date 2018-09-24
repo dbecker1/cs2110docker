@@ -5,7 +5,7 @@ before_script:
   - version="$(awk '$2 == "CS2110_IMAGE_VERSION" { print $3; exit }' Dockerfile)"
   - docker pull "$IMAGE_NAME" || true
 script:
-  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
+  - docker build --pull --no-cache --tag "$IMAGE_NAME" .
 after_script:
   - docker images
 before_deploy:
