@@ -6,5 +6,7 @@ access it from their browser. It is currently being piloted before being complet
 
 In order to run this image, install Docker and run the cs2110docker.sh script.
 
+Find the Docker Image on Docker Hub at  at https://hub.docker.com/r/dbecker1/cs2110docker/.
+
 
 Credit to https://github.com/ConSol/docker-headless-vnc-container for initial setup
