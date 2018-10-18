@@ -22,7 +22,7 @@ fi
 echo Found Docker Installation. Checking for existing containers.
 
 existingContainers=$(docker ps -a | grep $imageName | awk '{print $1}')
-
+echo $existingContainers
 if [ $existingContainers ]; then
 	echo Found CS 2110 containers. Stopping and removing them.
 	docker stop $existingContainers >/dev/null
@@ -48,7 +48,7 @@ fi
 echo Starting up new CS 2110 Docker Container:
 
 if [ "$1" == "-it" ]; then
-	docker run  -p 6901:6901 -p 5901:5901 -v "$(pwd)":/cs2110/host/ -it  --entrypoint /bin/bash dbecker1/cs2110docker
+	docker run --rm -p 6901:6901 -p 5901:5901 -v "$(pwd)":/cs2110/host/ -it  --entrypoint /bin/bash dbecker1/cs2110docker
 else 
 	docker run -d -p 6901:6901 -p 5901:5901 -v "$(pwd)":/cs2110/host/ dbecker1/cs2110docker 
 
