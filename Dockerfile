@@ -54,6 +54,10 @@ RUN $INST_SCRIPTS/cTools.sh
 
 ### Install complx and GBA
 RUN $INST_SCRIPTS/complxGba.sh
+# Use VBA-M keybinds for mednafen
+# (Default mednafen keybinds require a numpad)
+COPY --chown=1000:1000 ./src/config/mednafen $HOME/.mednafen
+ENV PATH=$PATH:/usr/games
 
 USER 1000
 
