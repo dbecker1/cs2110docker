@@ -3,8 +3,8 @@
 FROM ubuntu:18.04
 
 MAINTAINER Daniel Becker "dbecker.fl@gmail.com"
-ENV REFRESHED_AT 2018-09-20
-ENV CS2110_IMAGE_VERSION 1.0.1
+ENV REFRESHED_AT 2018-10-30
+ENV CS2110_IMAGE_VERSION 1.0.2
 
 ## Connection ports for controlling the UI:
 # VNC port:5901
@@ -54,6 +54,7 @@ RUN $INST_SCRIPTS/cTools.sh
 
 ### Install complx and GBA
 RUN $INST_SCRIPTS/complxGba.sh
+ENV PATH=$PATH:/usr/games
 
 USER 1000
 

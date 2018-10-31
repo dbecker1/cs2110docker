@@ -8,4 +8,4 @@ apt-get install -y software-properties-common
 add-apt-repository ppa:tricksterguy87/ppa-gt-cs2110
 apt update
 apt install -y complx-tools
-apt install -y gcc-arm-none-eabi cs2110-vbam-sdl cs2110-gba-linker-script nin10kit
+apt install -y gcc-arm-none-eabi cs2110-gba-linker-script nin10kit mednafen
