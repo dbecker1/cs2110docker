@@ -1,5 +1,4 @@
 # cs2110docker 
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/dbecker1/cs2110docker/master/docker-compose.yml)
 
 This Docker image is used by students enrolled in CS 2110 at the Georgia Institute of Technology. It contains an Ubuntu 18.04 image
 that contains the necessary tools for the class (gcc/gdb, complx, vba), along with a VNC server and noVNC to allow students to remotely
