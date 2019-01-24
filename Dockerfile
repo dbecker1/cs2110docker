@@ -14,7 +14,7 @@ ENV DISPLAY=:1 \
     NO_VNC_PORT=6901
 EXPOSE $VNC_PORT $NO_VNC_PORT
 
-### Envrionment config
+### Environment config
 ENV HOME=/cs2110 \
     TERM=xterm \
     STARTUPDIR=/dockerstartup \
