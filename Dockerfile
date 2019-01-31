@@ -3,7 +3,7 @@
 FROM ubuntu:18.04
 
 MAINTAINER Daniel Becker "dbecker.fl@gmail.com"
-ENV REFRESHED_AT 2018-10-30
+ENV REFRESHED_AT 2019-01-30
 ENV CS2110_IMAGE_VERSION 1.0.2
 
 ## Connection ports for controlling the UI:
@@ -55,6 +55,8 @@ RUN $INST_SCRIPTS/cTools.sh
 ### Install complx and GBA
 RUN $INST_SCRIPTS/complxGba.sh
 ENV PATH=$PATH:/usr/games
+
+RUN useradd -NM -d $HOME -u 1000 user
 
 USER 1000
 
